@@ -1,0 +1,27 @@
+jobs:
+  my-first-job:
+    location: southamerica-east1
+    container_image: "gcr.io/<project>/<name>:v0.xx.0"
+    env:
+      - name: "VAR"
+      - value: "chico"
+    timeout: 200s
+    max_retires: 1
+    iam_bindings:
+      - role: roles/run.invoker
+        member: "serviceAccount:<email-sa>"
+      - role: roles/run.viewer
+        member: "serviceAccount:<email-sa>"
+  my_second_job:
+    location: southamerica-east1
+    container_image: "gcr.io/<project>/<name>:v0.xx.0"
+    env:
+      - name: "VAR"
+      - value: "chico"
+    timeout: 500s
+    max_retires: 3
+    iam_bindings:
+      - role: roles/run.invoker
+        member: "serviceAccount:<sa-email>"
+      - role: roles/run.viewer
+        member: "serviceAccount:<sa-email>"
